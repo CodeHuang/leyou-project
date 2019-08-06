@@ -16,6 +16,7 @@ public class NumberUtils {
         return num.intValue() == num;
     }
 
+
     /**
      * 判断字符串是否是数值格式
      * @param str

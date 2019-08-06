@@ -12,6 +12,7 @@ import java.util.Map;
 
 public class JsonUtils {
 
+
     public static final ObjectMapper mapper = new ObjectMapper();
 
     private static final Logger logger = LoggerFactory.getLogger(JsonUtils.class);

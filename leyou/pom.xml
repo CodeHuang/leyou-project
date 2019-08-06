@@ -11,6 +11,7 @@
         <module>ly-registry</module>
         <module>ly-gateway-api</module>
         <module>ly-item</module>
+        <module>ly-common</module>
     </modules>
     <packaging>pom</packaging>
 

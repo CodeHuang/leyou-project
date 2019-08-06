@@ -26,6 +26,11 @@
             <version>2.9.9</version>
             <scope>compile</scope>
         </dependency>
+        <!-- 添加springMVC依赖 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+        </dependency>
     </dependencies>
 
 

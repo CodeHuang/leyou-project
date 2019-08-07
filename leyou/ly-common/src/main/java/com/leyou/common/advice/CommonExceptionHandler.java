@@ -1,6 +1,8 @@
 package com.leyou.common.advice;
 
-import org.springframework.http.HttpStatus;
+import com.leyou.common.enums.ExceptionEunm;
+import com.leyou.common.exception.LyException;
+import com.leyou.common.vo.ExceptionResule;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -8,11 +10,14 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class CommonExceptionHandler {
     /**
-     * 拦截运行时异常并返回错误信息
-     * @return
+     * @return 返回异常信息
+     * @author coderHuang
+     * @date 2019/8/7 10:25
+     * @github https://github.com/CodeHuang
      */
     @ExceptionHandler(RuntimeException.class)
-    public ResponseEntity<String> handleException(Exception e){
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+    public ResponseEntity<ExceptionResule> handleException(LyException e){
+        ExceptionEunm exceptionEunm = e.getExceptionEunm();
+        return ResponseEntity.status(exceptionEunm.getCode()).body(new ExceptionResule(e.getExceptionEunm()));
     }
 }

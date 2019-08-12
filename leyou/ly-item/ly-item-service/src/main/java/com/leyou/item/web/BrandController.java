@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * @author coderHuang
  * @date 2019/8/12 11:42
@@ -36,5 +38,17 @@ public class BrandController {
             @RequestParam(value = "key", required = false) String key
     ){
         return ResponseEntity.ok(brandService.queryBrandByPage(page, rows, sortBy, desc, key));
+    }
+
+    /**
+     * 新增品牌
+     * @param brand
+     * @param cids
+     * @return
+     */
+    @PostMapping
+    public ResponseEntity<Void> saveBrand(Brand brand,@RequestParam("cids") List<Long> cids){
+        brandService.saveBrand(brand,cids);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 }

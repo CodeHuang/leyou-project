@@ -19,6 +19,7 @@ public enum ExceptionEunm {
     BRAND_NOT_FOUND(400,"品牌不存在，或者输入有误，请尝试重新输入"),
     ADD_BRAND_ERROR(500,"新增品牌失败"),
     CATEGORY_NOTE_SAVE_ERROR(500,"新增品牌分类中间表失败"),
+    UPLOAD_FILE_ERROR(500,"上传文件失败"),
     ;
     private int code;
     private String msg;

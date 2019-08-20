@@ -27,7 +27,7 @@ public class CategoryService {
         List<Category> categoryList = categoryMapper.select(category);
         //判断查询结果
         if(CollectionUtils.isEmpty(categoryList)){
-            throw new LyException(ExceptionEunm.CATEGORY_NOTE_FOND);
+            throw new LyException(ExceptionEunm.CATEGORY_NOTE_FOUND);
         }
         return categoryList;
     }

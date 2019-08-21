@@ -16,7 +16,7 @@ import java.util.List;
  * @github https://github.com/CodeHuang
  */
 @RestController
-@RequestMapping("brand")
+@RequestMapping(value = "brand",method = RequestMethod.PUT)
 public class BrandController {
     @Autowired
     private BrandService brandService;
@@ -52,4 +52,5 @@ public class BrandController {
         brandService.saveBrand(brand,cids);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
+
 }

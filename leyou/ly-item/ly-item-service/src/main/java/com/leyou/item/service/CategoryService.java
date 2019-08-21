@@ -31,4 +31,8 @@ public class CategoryService {
         }
         return categoryList;
     }
+
+    public List<Category> queryByBrandId(Long bid) {
+        return categoryMapper.queryByBrandId(bid);
+    }
 }

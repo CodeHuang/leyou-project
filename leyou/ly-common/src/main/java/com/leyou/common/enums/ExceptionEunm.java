@@ -22,8 +22,8 @@ public enum ExceptionEunm {
     UPLOAD_FILE_ERROR(500,"上传文件失败"),
     FILE_TYPE_ERROR(400,"文件类型不匹配"),
     IMAGE_FILE_NOTE_FOUND(404,"图片文件不存在"),
+    SPEC_GROUP_NOT_FOND(404,"商品规格组不存在"),
     ;
     private int code;
     private String msg;
-
 }

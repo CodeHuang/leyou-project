@@ -35,4 +35,12 @@ public class CategoryService {
     public List<Category> queryByBrandId(Long bid) {
         return categoryMapper.queryByBrandId(bid);
     }
+
+    public List<Category> queryNameByIds(List<Long> ids) {
+        List<Category> list = categoryMapper.selectByIdList(ids);
+        if(CollectionUtils.isEmpty(list)){
+            throw new LyException(ExceptionEunm.CATEGORY_NOTE_FOUND);
+        }
+        return list;
+    }
 }

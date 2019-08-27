@@ -2,6 +2,7 @@ package com.leyou.item.mapper;
 
 import com.leyou.item.pojo.Category;
 import org.apache.ibatis.annotations.Select;
+import tk.mybatis.mapper.additional.idlist.IdListMapper;
 import tk.mybatis.mapper.common.Mapper;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  * @date 2019/8/8 11:38
  * @github https://github.com/CodeHuang
  */
-public interface CategoryMapper extends Mapper<Category> {
+public interface CategoryMapper extends Mapper<Category>, IdListMapper<Category, Long> {
     /**
      * 根据品牌id查询商品分类
      * @param bid

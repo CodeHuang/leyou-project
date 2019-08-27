@@ -38,4 +38,15 @@ public class UploadController {
         //返回200并携带url路径
         return ResponseEntity.ok(url);
     }
+
+    @PostMapping
+    public ResponseEntity<String> saveImage(@RequestParam("file")MultipartFile file){
+        String url = uploadService.uploadImage(file);
+        if(StringUtils.isBlank(url)){
+            //url为空 上传失败
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        //返回200并携带url路径
+        return ResponseEntity.ok(url);
+    }
 }

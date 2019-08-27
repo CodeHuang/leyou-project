@@ -3,12 +3,15 @@ package com.leyou.item.service;
 import com.leyou.common.enums.ExceptionEunm;
 import com.leyou.common.exception.LyException;
 import com.leyou.item.mapper.SpecGroupMapper;
+import com.leyou.item.mapper.SpecParamMapper;
+import com.leyou.item.pojo.SpecParam;
 import com.leyou.item.pojo.Specification;
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
 
 import java.util.List;
+
 
 /**
  * @author coderHuang
@@ -19,14 +22,27 @@ import java.util.List;
 public class SpecificationService {
     @Autowired
     private SpecGroupMapper groupMapper;
-    public List<Specification> queryGroupByCid(Long cid) {
-        //查询条件
-        Specification specification = new Specification();
-        specification.setCategoryId(cid);
-        List<Specification> list = groupMapper.select(specification);
-        if(CollectionUtils.isEmpty(list)){
+    @Autowired
+    private SpecParamMapper specParamMapper;
+
+    public Specification queryGroupByCid(Long cid) {
+        Specification specification = groupMapper.selectByPrimaryKey(cid);
+        if(specification==null){
             throw new LyException(ExceptionEunm.SPEC_GROUP_NOT_FOND);
         }
-        return list;
+        return specification;
+    }
+
+    public List<SpecParam> querySpecParams(Long gid, Long cid, Boolean searching, Boolean generic) {
+        SpecParam specParam = new SpecParam();
+        specParam.setGroupId(gid);
+        specParam.setCid(cid);
+        specParam.setSearching(searching);
+        specParam.setGeneric(generic);
+        List<SpecParam> specParamList = specParamMapper.select(specParam);
+        if (CollectionUtils.isEmpty(specParamList)) {
+            throw new LyException(ExceptionEunm.SPEC_GROUP_NOT_FOND);
+        }
+        return specParamList;
     }
 }
